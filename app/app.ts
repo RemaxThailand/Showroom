@@ -4,24 +4,34 @@ import { StatusBar } from 'ionic-native';
 
 import { Page1 } from './pages/page1/page1';
 import { Page2 } from './pages/page2/page2';
+import { ProductPage } from './pages/product/product';
+import { ProfilePage } from './pages/profile/profile';
+import { CartPage } from './pages/cart/cart';
+import { HistoryPage } from './pages/history/history';
+import { SettingPage } from './pages/setting/setting';
+import { SearchPage } from './pages/search/search';
 
 @Component({
   templateUrl: 'build/app.html'
 })
-class MyApp {
+class RemaxApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Page1;
+  rootPage: any = ProductPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(private platform: Platform) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Page uno', component: Page1 },
-      { title: 'Page dos', component: Page2 }
+      { title: 'Page dos', component: Page2, icon: 'menu' },
+      { title: 'สินค้า', component: ProductPage, icon: 'ios-keypad' },
+      { title: 'รถเข็นสินค้า', component: CartPage, icon: 'md-cart' },
+      { title: 'ประวัติคำสั่งซื้อ', component: HistoryPage, icon: 'md-time' },
+      { title: 'ข้อมูลส่วนตัว', component: ProfilePage, icon: 'ios-contact' },
+      { title: 'การตั้งค่า', component: SettingPage, icon: 'md-settings' }
     ];
 
   }
@@ -41,4 +51,4 @@ class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(RemaxApp);
