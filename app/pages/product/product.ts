@@ -1,3 +1,46 @@
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import {ViewController, Platform} from 'ionic-angular';
+import { CategoryPage } from '../category/category';
+import { CartPage } from '../cart/cart';
+import { FavoritePage } from '../favorite/favorite';
+import { HistoryPage } from '../history/history';
+
+
+@Component({
+  template: `
+    <ion-header>
+      <ion-navbar dark>
+	    <button menuToggle>
+	      <ion-icon name="menu"></ion-icon>
+	    </button>
+        <ion-title>สินค้า</ion-title>
+      </ion-navbar>
+    </ion-header>
+    <ion-content>
+    </ion-content>
+`})
+class TabIconTextPage {
+}
+
+
+@Component({
+  template: `
+	<ion-tabs class="tabs-icon" primary>
+		<ion-tab tabIcon="ios-keypad" [root]="tabProduct"></ion-tab>
+		<ion-tab tabIcon="md-cart" [root]="tabCart" tabBadge="3" tabBadgeStyle="danger"></ion-tab>
+		<ion-tab tabIcon="md-star" [root]="tabFavorite"></ion-tab>
+		<ion-tab tabIcon="md-time" [root]="tabHistory"></ion-tab>
+	</ion-tabs>
+`})
+export class ProductPage {
+  tabProduct = CategoryPage;
+  tabCart = CartPage;
+  tabFavorite = FavoritePage;
+  tabHistory = HistoryPage;
+}
+
+/*
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -21,3 +64,4 @@ export class ProductPage {
   }
 
 }
+*/

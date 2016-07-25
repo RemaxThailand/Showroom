@@ -4,3 +4,17 @@
 .product-page ion-content { padding-bottom:0px }
 .product-page ion-list { margin-bottom:0px }
 .product-page ion-item { padding-left: 4px }
+
+body.ios {
+
+  .tab-button {
+    &[aria-selected="false"] {
+      color: #8c8c8c !important;
+    }
+
+    &[aria-selected="true"] {
+      color: #f53d3d !important;
+    }
+  }
+
+}
