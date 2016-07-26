@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { ionicBootstrap, Platform, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
-import { Page2 } from './pages/page2/page2';
 import { ProductPage } from './pages/product/product';
 import { ProfilePage } from './pages/profile/profile';
 import { CartPage } from './pages/cart/cart';
@@ -26,7 +25,6 @@ class RemaxApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Page dos', component: Page2, icon: 'menu' },
       { title: 'สินค้า', component: ProductPage, icon: 'ios-keypad' },
       { title: 'รถเข็นสินค้า', component: CartPage, icon: 'md-cart' },
       { title: 'ประวัติคำสั่งซื้อ', component: HistoryPage, icon: 'md-time' },
@@ -38,15 +36,11 @@ class RemaxApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
     });
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 }
