@@ -10,10 +10,18 @@ export class ProductListPage {
   categoryUrl: string;
   cartCount: number;
 
+  product: Array<{ name: string, sku: string, price: number, sellPrice: number, isFavorite: boolean }>;
+
   constructor(private nav: NavController, private navParams: NavParams) {
     this.categoryName = this.navParams.get('categoryName');
     this.categoryUrl = this.navParams.get('url');
     this.cartCount = 15;
+    this.product = [
+      { name: 'Car Charger 3.4A RCC-303 (Rose Gold)- REMAX', sku: 'D1600261', price: 799, sellPrice: 256, isFavorite: true },
+      { name: 'Car Charger Cable 2in1(RCC-103,Finchy,Gold) - REMAX', sku: 'D1600790', price: 799, sellPrice: 256, isFavorite: true },
+      { name: '2USB RCC201 Car Charger - REMAX', sku: 'D1400508', price: 799, sellPrice: 256, isFavorite: true },
+      { name: 'REMAX RA-USB Micro USB / Type-C Silver', sku: 'D1600584', price: 799, sellPrice: 256, isFavorite: true }
+    ];
   }
 
   goCart() {
