@@ -22,11 +22,11 @@ export class ProductListPage {
       { name: '2USB RCC201 Car Charger - REMAX', sku: 'D1400508', price: 799, sellPrice: 256, isFavorite: false },
       { name: 'REMAX RA-USB Micro USB / Type-C Silver', sku: 'D1600584', price: 799, sellPrice: 256, isFavorite: true }
     ];
-    let loading = Loading.create({
+
+    /*let loading = Loading.create({
       content: "กำลังโหลดข้อมูล<br>กรุณารอสักครู่ค่ะ..."
     });
-
-    this.nav.present(loading);
+    this.nav.present(loading);*/
     //loading.dismiss();
   }
 
