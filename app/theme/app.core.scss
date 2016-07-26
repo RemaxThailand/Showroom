@@ -8,6 +8,9 @@
 // App Shared Sass variables belong in app.variables.scss.
 
 @import "../pages/product/product";
+@import "../pages/category/category";
 
 ion-navbar { box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.22) }
 ion-icon { position:relative; top:2px; margin-right:6px }
+
+.capitalize { text-transform: capitalize }

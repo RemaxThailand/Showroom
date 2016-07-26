@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ProductListPage } from '../product-list/product-list';
+import { CartPage } from '../cart/cart';
 
 @Component({
   templateUrl: 'build/pages/category/category.html',
@@ -18,10 +19,10 @@ export class CategoryPage {
       { title: 'Cable', note: 'สายชาร์จ', thumbnail: 'https://src.remaxthailand.co.th/img/category/cable/1.jpg' },
       { title: 'Power Bank', note: 'แบตเตอรี่สำรอง', thumbnail: 'https://src.remaxthailand.co.th/img/category/power_bank/1.jpg' }
     ];
+    //this.nav.parent.select(2);
   }
 
   navigate(category) {
-    console.log("Here we go!!");
     this.nav.push(ProductListPage, {
       categoryName: category.title,
       categoryUrl: category.thumbnail

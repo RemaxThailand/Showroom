@@ -19,6 +19,7 @@ class RemaxApp {
   rootPage: any = ProductPage;
 
   pages: Array<{title: string, component: any, icon: string}>;
+  selectedPage: string;
 
   constructor(private platform: Platform) {
     this.initializeApp();

@@ -8,14 +8,62 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let c of category">
-      <ion-thumbnail item-left>
-        <img src="{{c.thumbnail}}">
-      </ion-thumbnail>
-      <h2>{{c.title}}</h2>
-      <p>{{c.note}}</p>
-      <button clear item-right (click)="navigate(c)">เลือก</button>
-    </ion-item>
-  </ion-list>
+
+  <ion-card class="category-card" *ngFor="let c of category">
+    <ion-card-header>
+      <ion-icon name="ios-cube" primary></ion-icon>
+      <b primary>{{c.title}}</b>
+    </ion-card-header>
+    <hr>
+    <ion-grid>
+      <ion-row>
+        <ion-col width-50>
+          <ion-card>
+            <img src="https://src.remaxthailand.co.th/img/category/power_bank/1.jpg" />
+            <ion-item class="price">
+              <span clear item-left>&#3647; <strike>1,256</strike></span>
+              <span clear item-right danger>&#3647; <b>675</b></span>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+        <ion-col width-50>
+          <ion-card>
+            <img src="https://src.remaxthailand.co.th/img/category/bag/1.jpg" />
+            <ion-item class="price">
+              <span clear item-left>&#3647; <strike>1,256</strike></span>
+              <span clear item-right danger>&#3647; <b>675</b></span>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50>
+          <ion-card>
+            <img src="https://src.remaxthailand.co.th/img/category/cable/1.jpg" />
+            <ion-item class="price">
+              <span clear item-left>&#3647; <strike>1,256</strike></span>
+              <span clear item-right danger>&#3647; <b>675</b></span>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+        <ion-col width-50>
+          <ion-card>
+            <img src="https://src.remaxthailand.co.th/img/category/adapter/1.jpg" />
+            <ion-item class="price">
+              <span clear item-left>&#3647; <strike>1,256</strike></span>
+              <span clear item-right danger>&#3647; <b>675</b></span>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <hr>
+    <ion-row>
+      <ion-col text-center (click)="navigate(c)">
+        <button primary clear small>
+          <div class="capitalize">ดูสินค้าทั้งหมดในหมวดหมู่ {{c.title}}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
