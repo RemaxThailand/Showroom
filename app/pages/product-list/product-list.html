@@ -13,80 +13,17 @@
 
 <ion-content padding>
   <ion-grid>
-    <ion-row>
-      <ion-col width-50>
+    <ion-row wrap>
+      <ion-col width-50 *ngFor="let p of product">
         <ion-card>
-          <img src="https://img.remaxthailand.co.th/300x300/product/D1600261/1.jpg" />
+          <img src="https://img.remaxthailand.co.th/300x300/product/{{p.sku}}/1.jpg" />
           <ion-card-content>
-            <p>
-              Car Charger 3.4A RCC-303 (Rose Gold)- REMAX
-            </p>
-            <button light block outline class="price" (click)="updateFavorite()">
+            <p>{{p.name}}</p>
+            <button light block outline class="price" (click)="updateFavorite(p)">
               <ion-item class="price">
-                <span clear item-left>&#3647;(<strike>1,256</strike>) <b danger>675</b></span>
-                <span clear item-right favorite><ion-icon name="md-star"></ion-icon></span>
-              </ion-item>
-            </button>
-            <button block outline (click)="updateCart()">
-              <ion-icon name="md-add-circle"></ion-icon>
-              เพิ่มสินค้าในรถเข็น
-            </button>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col width-50>
-        <ion-card>
-          <img src="https://img.remaxthailand.co.th/300x300/product/D1600790/1.jpg" />
-          <ion-card-content>
-            <p>
-              Car Charger Cable 2in1(RCC-103,Finchy,Gold) - REMAX
-            </p>
-            <button light block outline class="price" (click)="updateFavorite()">
-              <ion-item class="price">
-                <span clear item-left>&#3647;(<strike>1,256</strike>) <b danger>675</b></span>
-                <span clear item-right><ion-icon name="md-star-outline"></ion-icon></span>
-              </ion-item>
-            </button>
-            <button block outline (click)="updateCart()">
-              <ion-icon name="md-add-circle"></ion-icon>
-              เพิ่มสินค้าในรถเข็น
-            </button>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col width-50>
-        <ion-card>
-          <img src="https://img.remaxthailand.co.th/300x300/product/D1400508/1.jpg" />
-          <ion-card-content>
-            <p>
-              2USB RCC201 Car Charger - REMAX
-            </p>
-            <button light block outline class="price" (click)="updateFavorite()">
-              <ion-item class="price">
-                <span clear item-left>&#3647;(<strike>1,256</strike>) <b danger>675</b></span>
-                <span clear item-right><ion-icon name="md-star-outline"></ion-icon></span>
-              </ion-item>
-            </button>
-            <button block outline (click)="updateCart()">
-              <ion-icon name="md-add-circle"></ion-icon>
-              เพิ่มสินค้าในรถเข็น
-            </button>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col width-50>
-        <ion-card>
-          <img src="https://img.remaxthailand.co.th/300x300/product/D1600584/1.jpg" />
-          <ion-card-content>
-            <p>
-              REMAX RA-USB Micro USB / Type-C Silver
-            </p>
-            <button light block outline class="price" (click)="updateFavorite()">
-              <ion-item class="price">
-                <span clear item-left>&#3647;(<strike>1,256</strike>) <b danger>675</b></span>
-                <span clear item-right favorite><ion-icon name="md-star"></ion-icon></span>
+                <span clear item-left>&#3647;(<strike>{{p.price}}</strike>) <b danger>{{p.sellPrice}}</b></span>
+                <span *ngIf="p.isFavorite" clear item-right favorite><ion-icon name="md-star"></ion-icon></span>
+                <span *ngIf="!p.isFavorite" clear item-right><ion-icon name="md-star-outline"></ion-icon></span>
               </ion-item>
             </button>
             <button block outline (click)="updateCart()">
