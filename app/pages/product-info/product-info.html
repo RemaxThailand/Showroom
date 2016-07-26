@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar dark>
+    <ion-title>{{productName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+
+    <ion-slides pager [options]="slideOptions">
+      <ion-slide>
+        <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/1.jpg" />
+      </ion-slide>
+      <ion-slide>
+        <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/2.jpg" />
+      </ion-slide>
+      <ion-slide>
+        <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/3.jpg" />
+      </ion-slide>
+      <ion-slide>
+        <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/4.jpg" />
+      </ion-slide>
+      <ion-slide>
+        <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/5.jpg" />
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{productName}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-100>
+        <h4>รายละเอียดเกี่ยวกับสินค้า</h4>
+        <ul>
+          <li>Virtual Reality 3D แว่นชมภาพเสมือนจริง ให้คุณสัมผัสประสบการณ์ใหม่กับการรับชมภาพยนตร์ 3 มิติ หรือชมภาพในมุมกว้าง 360 องศา ยังสามารถโหลดแอพเพื่อเชื่อมต่อระหว่างสมาร์ทโฟนและคอมพิวเตอร์ของคุณและเพลิดเพลินไปกับเกมส์ที่คุณชอบได้อีกด้วย เพียงแค่นี้คุณก็สามารถสนุกกับ
+            VR ล้ำ ๆ ได้อย่างง่ายดาย</li>
+        </ul>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-100>
+        <h4>คุณสมบัติพิเศษ</h4>
+        <ul>
+          <li>ชมภาพในระบบ 3D และแบบ 360 องศา ให้ความรู้สึกสมจริงเสมือนอยู่ในสถานที่จริง</li>
+          <li>รองรับสมาร์ทโฟนทั้ง iOS และ Android ที่มีขนาดไม่เกิน 4.7 - 6 นิ้ว</li>
+          <li>เลนส์ชนิดพิเศษไม่ต้องสวมแว่น 3D ก็สามารถรับชมภาพในระบบ 3D ได้ (ภาพยนตร์ของคุณต้องเป็นระบบ 3D ด้วยเช่นกัน)</li>
+          <li>เพลิดเพลินได้ต่อเนื่องโดยไม่ปวดตา</li>
+          <li>ฟองน้ำที่รองรับหน้าผาก สามารถทำความสะอาดได้ง่าย</li>
+        </ul>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card>
+    <img class="img-detail" *ngFor="let i of items" src="https://img.remaxthailand.co.th/product/D1600530/{{i.name}}" />
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!loadFinish">
+    <ion-infinite-scroll-content loadingText="กำลังโหลดรูปภาพ...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

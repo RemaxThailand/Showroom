@@ -16,9 +16,9 @@
     <ion-row wrap>
       <ion-col width-50 *ngFor="let p of product">
         <ion-card>
-          <img src="https://img.remaxthailand.co.th/300x300/product/{{p.sku}}/1.jpg" />
+          <img src="https://img.remaxthailand.co.th/300x300/product/{{p.sku}}/1.jpg" (click)="navigate(p)" />
           <ion-card-content>
-            <p>{{p.name}}</p>
+            <p (click)="navigate(p)">{{p.name}}</p>
             <button light block outline class="price" (click)="updateFavorite(p)">
               <ion-item class="price">
                 <span clear item-left>&#3647;(<strike>{{p.price}}</strike>) <b danger>{{p.sellPrice}}</b></span>

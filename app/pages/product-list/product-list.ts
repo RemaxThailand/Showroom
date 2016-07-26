@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Toast, Loading } from 'ionic-angular';
 import { CategoryPage } from '../category/category';
+import { ProductInfoPage } from '../product-info/product-info';
 
 @Component({
   templateUrl: 'build/pages/product-list/product-list.html',
@@ -30,10 +31,16 @@ export class ProductListPage {
     //loading.dismiss();
   }
 
+  navigate(product) {
+    this.nav.push(ProductInfoPage, {
+      productName: product.name,
+      productSku: product.sku
+    });
+  }
+
   goCart() {
     this.nav.parent.select(1);
     this.nav.pop();
-    //this.nav.setRoot(CartPage);
   }
 
   updateFavorite(product) {
