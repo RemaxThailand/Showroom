@@ -2,7 +2,9 @@
 .category-page scroll-content { padding: 0px 10px 10px 10px }
 .category-page ion-card { margin:0; width:100% }
 .category-page .category-card { margin-top: 12px }
+.category-page .category-card ion-card-header { background-color: color($colors, light) }
+.category-page .category-card .view-all { background-color: color($colors, light); color: white }
 .category-page hr { margin:0 }
-.category-page .price { padding: 3px 5px; min-height:1em }
+.category-page .price { padding: 3px 5px; min-height:1em; background-color: color($colors, light) }
 .category-page .price span { margin:0 }
 .category-page .price .item-inner { padding:0 }

@@ -11,14 +11,14 @@
 
   <ion-card class="category-card" *ngFor="let c of category">
     <ion-card-header>
-      <ion-icon name="ios-cube" primary></ion-icon>
-      <b primary>{{c.title}}</b>
+      <ion-icon name="ios-cube"></ion-icon>
+      <b>{{c.title}}</b>
     </ion-card-header>
     <hr>
     <ion-grid>
       <ion-row>
         <ion-col width-50>
-          <ion-card>
+          <ion-card class="product">
             <img src="https://src.remaxthailand.co.th/img/category/power_bank/1.jpg" />
             <ion-item class="price">
               <span clear item-left>&#3647; <strike>1,256</strike></span>
@@ -27,7 +27,7 @@
           </ion-card>
         </ion-col>
         <ion-col width-50>
-          <ion-card>
+          <ion-card class="product">
             <img src="https://src.remaxthailand.co.th/img/category/bag/1.jpg" />
             <ion-item class="price">
               <span clear item-left>&#3647; <strike>1,256</strike></span>
@@ -38,7 +38,7 @@
       </ion-row>
       <ion-row>
         <ion-col width-50>
-          <ion-card>
+          <ion-card class="product">
             <img src="https://src.remaxthailand.co.th/img/category/cable/1.jpg" />
             <ion-item class="price">
               <span clear item-left>&#3647; <strike>1,256</strike></span>
@@ -47,7 +47,7 @@
           </ion-card>
         </ion-col>
         <ion-col width-50>
-          <ion-card>
+          <ion-card class="product">
             <img src="https://src.remaxthailand.co.th/img/category/adapter/1.jpg" />
             <ion-item class="price">
               <span clear item-left>&#3647; <strike>1,256</strike></span>
@@ -58,9 +58,9 @@
       </ion-row>
     </ion-grid>
     <hr>
-    <ion-row>
+    <ion-row class="view-all">
       <ion-col text-center (click)="navigate(c)">
-        <button primary clear small>
+        <button clear small>
           <div class="capitalize">ดูสินค้าทั้งหมดในหมวดหมู่ {{c.title}}</div>
         </button>
       </ion-col>
