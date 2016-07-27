@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Toast } from 'ionic-angular';
 
 @Component({
   templateUrl: 'build/pages/product-info/product-info.html',
@@ -10,6 +10,9 @@ export class ProductInfoPage {
   image: Array<{ name: string }>;
   items = [];
   loadFinish: boolean = false;
+  qty: number = 1;
+  qtyRemain: number = 99;
+  isFavorite: boolean = false;
 
   constructor(private nav: NavController, private navParams: NavParams) {
     this.productName = this.navParams.get('productName');
@@ -33,6 +36,32 @@ export class ProductInfoPage {
     loop: true,
     autoplay: 2000
   };
+
+  updateQuantity(qty) {
+    this.qty += qty;
+    if (this.qty <= 0) this.qty = 1;
+    if (this.qty > this.qtyRemain) this.qty = this.qtyRemain;
+  }
+
+  setQuantity(qty) {
+    this.qty = qty;
+    if (this.qty <= 0) this.qty = 1;
+    if (this.qty > this.qtyRemain) this.qty = this.qtyRemain;
+  }
+
+  addCart() {
+    this.qtyRemain -= this.qty;
+    let toast = Toast.create({
+      message: 'เพิ่มสินค้าลงในรถเข็น '+this.qty+' ชิ้น เรียบร้อยแล้ว',
+      duration: 3000
+    });
+    this.nav.present(toast);
+    if (this.qty > 0) this.qty = 1;
+  }
+
+  updateFavorite() {
+    this.isFavorite = !this.isFavorite;
+  }
 
   doInfinite(infiniteScroll) {
     setTimeout(() => {

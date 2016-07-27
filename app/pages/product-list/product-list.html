@@ -22,8 +22,8 @@
             <button light block outline class="price" (click)="updateFavorite(p)">
               <ion-item class="price">
                 <span clear item-left>&#3647;(<strike>{{p.price}}</strike>) <b danger>{{p.sellPrice}}</b></span>
-                <span *ngIf="p.isFavorite" clear item-right favorite><ion-icon name="md-star"></ion-icon></span>
-                <span *ngIf="!p.isFavorite" clear item-right><ion-icon name="md-star-outline"></ion-icon></span>
+                <span *ngIf="p.isFavorite" clear item-right danger><ion-icon name="md-heart"></ion-icon></span>
+                <span *ngIf="!p.isFavorite" clear item-right><ion-icon name="md-heart-outline"></ion-icon></span>
               </ion-item>
             </button>
             <button block outline (click)="updateCart()">

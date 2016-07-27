@@ -17,3 +17,16 @@ ion-icon { position:relative; top:2px; margin-right:6px }
 ion-card.product { box-shadow: none; border: 1px solid #c8c8c8 }
 
 .capitalize { text-transform: capitalize }
+
+.color-primary { color: color($colors, primary)}
+.color-danger { color: color($colors, danger)}
+
+.bg-light { background-color: color($colors, light)}
+.bg-lightRed { background-color: color($colors, lightRed)}
+
+
+.margin-top-10 { margin-top: 10px }
+.margin-right-0 { margin-right: 0 }
+.padding-10 { padding: 10px }
+
+.font-dot9 { font-size: 0.9em }

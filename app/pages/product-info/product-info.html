@@ -26,11 +26,53 @@
       </ion-slide>
     </ion-slides>
 
-    <ion-card-content>
-      <ion-card-title>
-        {{productName}}
-      </ion-card-title>
+    <ion-card-content text-center>
+      <h2><b>{{productName}}</b></h2>
+      <b>รุ่น U27</b>
     </ion-card-content>
+
+    <div text-center class="bg-light padding-10">
+      <ion-badge>รับประกันสินค้า 1 ปี</ion-badge> <span>โดย Remax (Thailand)</span>
+    </div>
+    <div text-center>
+      <h1 danger class="margin-top-10"><b>269</b> บาท</h1>
+      <strike>399 บาท</strike>
+      <ion-badge class="bg-lightRed">-33%</ion-badge>
+    </div>
+    <ion-item class="bg-light margin-top-10">
+      <div clear item-left>
+        <h1 (click)="updateFavorite()">
+          <ion-icon  *ngIf="isFavorite" name="md-heart" danger></ion-icon>
+          <ion-icon  *ngIf="!isFavorite" name="md-heart-outline"></ion-icon>
+        </h1>
+      </div>
+      <div clear item-right>
+        <table *ngIf="qtyRemain > 0">
+          <tr>
+            <td class="font-dot9">จำนวน &nbsp;</td>
+            <td>
+              <button light round (click)="updateQuantity(-1)">
+                <ion-icon class="margin-right-0" name="md-remove-circle"></ion-icon>
+              </button>
+            </td>
+            <td class="font-dot9">
+              <ion-input type="number" min="1" text-center value="{{qty}}" style="width:50px" (input)="setQuantity($event.target.value)"></ion-input>
+            </td>
+            <td>
+              <button light round (click)="updateQuantity(1)">
+                <ion-icon class="margin-right-0" name="md-add-circle"></ion-icon>
+              </button>
+            </td>
+            <td class="font-dot9">&nbsp; ชิ้น &nbsp;</td>
+            <td>
+              <button danger (click)="addCart()"><b>&nbsp; สั่งซื้อ &nbsp;</b></button>
+            </td>
+          </tr>
+        </table>
+        <ion-badge *ngIf="qtyRemain <= 0" dark> สินค้าหมดชั่วคราว </ion-badge>
+      </div>
+    </ion-item>
+
   </ion-card>
   <ion-grid>
     <ion-row>
