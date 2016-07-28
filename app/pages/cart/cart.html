@@ -5,13 +5,8 @@
     </button>
     <ion-title>รถเข็นสินค้า</ion-title>
     <ion-buttons end>
-      <button royal (click)="goCart()">
-        <ion-icon name="md-checkmark-circle"></ion-icon>
-        <ion-badge item-right>{{cartCount}}</ion-badge>
-      </button>
-      <button royal (click)="goCart()">
+      <button royal (click)="removeProduct()">
         <ion-icon name="md-trash"></ion-icon>
-        <ion-badge item-right>{{cartCount}}</ion-badge>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -20,29 +15,47 @@
 <ion-content>
   <ion-card>
     <ion-list>
-      <ion-item>
-        <ion-checkbox dark checked="true" item-left></ion-checkbox>
-        <ion-avatar item-left>
-          <img src="https://img.remaxthailand.co.th/300x300/product/D1600788/1.jpg">
-        </ion-avatar>
-        <ion-label>Daenerys Targaryen</ion-label>
-        <button clear item-right>View</button>
-      </ion-item>
-      <ion-item>
-        <ion-avatar item-left>
-          <img src="https://img.remaxthailand.co.th/300x300/product/D1600788/1.jpg">
-        </ion-avatar>
-        <h2>My Neighbor Totoro</h2>
-        <p>Hayao Miyazaki • 1988</p>
-        <button clear item-right>View</button>
-      </ion-item>
-      <ion-item>
-        <ion-avatar item-left>
-          <img src="https://img.remaxthailand.co.th/300x300/product/D1600788/1.jpg">
-        </ion-avatar>
-        <h2>My Neighbor Totoro</h2>
-        <p>Hayao Miyazaki • 1988</p>
-        <button clear item-right>View</button>
+      <ion-item class="padding-left-5" *ngFor="let p of product" [class.bg-lightYellow]="p.isSelected">
+        <ion-checkbox dark item-left class="margin-right-10" [(ngModel)]="p.isSelected"></ion-checkbox>
+        <ion-label class="margin-0">
+          <ion-item no-lines class="padding-left-5 item-text-wrap" [class.bg-lightYellow]="p.isSelected">
+            <ion-thumbnail item-right class="margin-0 margin-top-3">
+              <table>
+                <tr>
+                  <td colspan="3">
+                    <img src="https://img.remaxthailand.co.th/300x300/product/{{p.sku}}/1.jpg" align="right" class="margin-right-2">
+                  </td>
+                </tr>
+                <tr [hidden]="p.remain <= 0">
+                  <td>
+                    <button dark outline (click)="updateQuantity(p, -1)">
+                      <ion-icon class="margin-left-5 margin-right-5" name="md-remove"></ion-icon>
+                    </button>
+                  </td>
+                  <td>
+                    <button outline danger class="bg-lightYellow">
+                      <h2><b danger>{{p.qty}}</b></h2>
+                    </button>
+                  </td>
+                  <td>
+                    <button dark outline (click)="updateQuantity(p, 1)">
+                      <ion-icon class="margin-left-5 margin-right-5" name="md-add"></ion-icon>
+                    </button>
+                  </td>
+                </tr>
+                <tr [hidden]="p.remain > 0">
+                  <td colspan="3">
+                    <ion-badge danger class="margin-bottom-2">สินค้าหมด</ion-badge>
+                  </td>
+                </tr>
+              </table>
+            </ion-thumbnail>
+            <h2 class="text-wrap">{{p.name}}</h2>
+            <p>ราคา <b danger>{{p.sellPrice}}</b> บาท
+              <ion-badge class="bg-lightRed">{{(p.sellPrice/p.price*100-100).toFixed(2)}}%</ion-badge>
+            </p>
+          </ion-item>
+        </ion-label>
       </ion-item>
     </ion-list>
   </ion-card>
