@@ -51,7 +51,7 @@ export class CartPage {
               for (var i = 0; i < this.product.length; i++)
                 if (this.product[i].isSelected) {
                   this.product.splice(i, 1);
-                  break;
+                  i--;
                 }
             }
           }
