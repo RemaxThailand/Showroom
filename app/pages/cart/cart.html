@@ -34,7 +34,7 @@
                   </td>
                   <td>
                     <button outline danger class="bg-lightYellow">
-                      <h2><b danger>{{p.qty}}</b></h2>
+                      <h2><b danger>{{numberWithCommas(p.qty)}}</b></h2>
                     </button>
                   </td>
                   <td>
@@ -51,7 +51,7 @@
               </table>
             </ion-thumbnail>
             <h2 class="text-wrap">{{p.name}}</h2>
-            <p>ราคา <b danger>{{p.sellPrice}}</b> บาท
+            <p>ราคา <b danger>{{numberWithCommas(p.sellPrice)}}</b> บาท
               <ion-badge class="bg-lightRed">{{(p.sellPrice/p.price*100-100).toFixed(2)}}%</ion-badge>
             </p>
           </ion-item>
@@ -65,15 +65,15 @@
   <ion-toolbar>
     <table width="100%">
       <tr>
-        <td class="padding-left-10" valign="middle">
-          ราคารวม
+        <td class="padding-left-10 padding-right-5" valign="middle" width="10" nowrap="nowrap">
+          <span class="margin-right-10">รวม</span>
         </td>
-        <td>
-          <h4 class="margin-top-10"><b danger>893,424</b></h4>
+        <td width="10" nowrap="nowrap">
+          <h4 class="margin-top-10 margin-right-10"><b danger>{{numberWithCommas(totalPrice)}}</b></h4>
         </td>
-          <td>
-            บาท
-          </td>
+        <td width="10 " nowrap="nowrap">
+          บาท
+        </td>
         <td align="right">
           <button danger>
             <ion-icon name="md-checkmark-circle"></ion-icon> ยืนยันคำสั่งซื้อ

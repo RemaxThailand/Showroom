@@ -18,11 +18,11 @@
 
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon name="{{p.icon}}"></ion-icon> {{p.title}} {{pageIconSelected}}
+        <ion-icon name="{{p.icon}}" class="relative margin-right-6 top-2"></ion-icon> {{p.title}} {{pageIconSelected}}
         <ion-badge item-right>260k</ion-badge>
       </button>
       <a menuClose ion-item href="tel:0876733414">
-        <ion-icon name="ios-call"></ion-icon> ติดต่อร้านค้า
+        <ion-icon name="ios-call" class="relative margin-right-6 top-2"></ion-icon> ติดต่อร้านค้า
       </a>
     </ion-list>
   </ion-content>

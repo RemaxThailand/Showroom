@@ -25,9 +25,6 @@
         <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/5.jpg" />
       </ion-slide>
     </ion-slides>
-    <button fab fab-right fab-top>
-      <ion-icon name="pin"></ion-icon>
-    </button>
 
     <ion-card-content text-center>
       <h2><b>{{productName}}</b></h2>
@@ -45,8 +42,8 @@
     <ion-item class="bg-light margin-top-10">
       <div clear item-left>
         <h1 (click)="updateFavorite()">
-          <ion-icon  *ngIf="isFavorite" name="md-heart" danger></ion-icon>
-          <ion-icon  *ngIf="!isFavorite" name="md-heart-outline"></ion-icon>
+          <ion-icon *ngIf="isFavorite" name="md-heart" danger class="relative top-4"></ion-icon>
+          <ion-icon *ngIf="!isFavorite" name="md-heart-outline" class="relative top-4"></ion-icon>
         </h1>
       </div>
       <div clear item-right>
@@ -55,7 +52,7 @@
             <td class="font-dot9">จำนวน &nbsp;</td>
             <td>
               <button light round (click)="updateQuantity(-1)">
-                <ion-icon class="margin-right-0" name="md-remove-circle"></ion-icon>
+                <ion-icon name="md-remove-circle" class="relative top-2"></ion-icon>
               </button>
             </td>
             <td class="font-dot9">
@@ -63,7 +60,7 @@
             </td>
             <td>
               <button light round (click)="updateQuantity(1)">
-                <ion-icon class="margin-right-0" name="md-add-circle"></ion-icon>
+                <ion-icon name="md-add-circle" class="relative top-2"></ion-icon>
               </button>
             </td>
             <td class="font-dot9">&nbsp; ชิ้น &nbsp;</td>
