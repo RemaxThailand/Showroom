@@ -4,9 +4,46 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>รถเข็นสินค้า</ion-title>
+    <ion-buttons end>
+      <button royal (click)="goCart()">
+        <ion-icon name="md-checkmark-circle"></ion-icon>
+        <ion-badge item-right>{{cartCount}}</ion-badge>
+      </button>
+      <button royal (click)="goCart()">
+        <ion-icon name="md-trash"></ion-icon>
+        <ion-badge item-right>{{cartCount}}</ion-badge>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-checkbox dark checked="true" item-left></ion-checkbox>
+        <ion-avatar item-left>
+          <img src="https://img.remaxthailand.co.th/300x300/product/D1600788/1.jpg">
+        </ion-avatar>
+        <ion-label>Daenerys Targaryen</ion-label>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="https://img.remaxthailand.co.th/300x300/product/D1600788/1.jpg">
+        </ion-avatar>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="https://img.remaxthailand.co.th/300x300/product/D1600788/1.jpg">
+        </ion-avatar>
+        <h2>My Neighbor Totoro</h2>
+        <p>Hayao Miyazaki • 1988</p>
+        <button clear item-right>View</button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
