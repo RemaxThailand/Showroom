@@ -10,7 +10,7 @@ export class ProductInfoPage {
   productName: string;
   productSku: string;
   productId: number;
-  //productData = {};
+  productData = {};
   productDetail = [];
   productProperties = [];
   productHowTo = [];
@@ -28,7 +28,7 @@ export class ProductInfoPage {
   warrantyMonth: boolean = false;
   warrantyDay: boolean = false;
 
-  productData: Array<{ shop: string, name: string, brand: string, sku: string, price: number, price1: number, price2: number, price3: number, price4: number, price5: number, isPromotion: boolean, pricePromotion: number, stock: number, width: number, length: number, weight: number, grossWeight: number, color: string, material: string, model: string, chargeType: string, deviceSupport: string, standard: string, madeIn: string, tag: string, label: string, rating: number, reviewCount: number, viewCount: number, warranty: number, active: boolean, visible: boolean, cover: string, image: Array<{any}>, imageDetail: Array<{any}>, detail: Array<{any}>, inBox: Array<{any}>, howToUse: Array<{any}>, specialProperties: Array<{any}> }>;
+  //productData: Array<{ shop: string, name: string, brand: string, sku: string, price: number, price1: number, price2: number, price3: number, price4: number, price5: number, isPromotion: boolean, pricePromotion: number, stock: number, width: number, length: number, weight: number, grossWeight: number, color: string, material: string, model: string, chargeType: string, deviceSupport: string, standard: string, madeIn: string, tag: string, label: string, rating: number, reviewCount: number, viewCount: number, warranty: number, active: boolean, visible: boolean, cover: string, image: Array<{any}>, imageDetail: Array<{any}>, detail: Array<{any}>, inBox: Array<{any}>, howToUse: Array<{any}>, specialProperties: Array<{any}> }>;
 
   constructor(private nav: NavController, private navParams: NavParams, private http: Http) {
     this.productName = this.navParams.get('productName');
