@@ -9,35 +9,26 @@
   <ion-card>
 
     <ion-slides pager [options]="slideOptions">
-      <ion-slide>
-        <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/1.jpg" />
-      </ion-slide>
-      <ion-slide>
-        <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/2.jpg" />
-      </ion-slide>
-      <ion-slide>
-        <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/3.jpg" />
-      </ion-slide>
-      <ion-slide>
-        <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/4.jpg" />
-      </ion-slide>
-      <ion-slide>
-        <img src="https://img.remaxthailand.co.th/500x500/product/D1600530/5.jpg" />
+      <ion-slide *ngFor="let img of image">
+        <img src="https://img.remaxthailand.co.th/500x500/product/{{productSku}}/{{img}}" />
       </ion-slide>
     </ion-slides>
 
     <ion-card-content text-center>
       <h2><b>{{productName}}</b></h2>
-      <b>รุ่น U27</b>
+      <b *ngIf="productData.model != ''">รุ่น {{productData.model}}</b>
     </ion-card-content>
 
     <div text-center class="bg-light padding-10">
-      <ion-badge>รับประกันสินค้า 1 ปี</ion-badge> <span>โดย Remax (Thailand)</span>
+      <ion-badge *ngIf="productData.warranty >= 365">รับประกันสินค้า {{warranty}} ปี</ion-badge>
+      <ion-badge *ngIf="productData.warranty >= 30 && productData.warranty < 365">รับประกันสินค้า {{warranty}} เดือน</ion-badge>
+      <ion-badge *ngIf="productData.warranty < 30 && productData.warranty > 0">รับประกันสินค้า {{warranty}} วัน</ion-badge>
+      <span *ngIf="productData.warranty > 0">โดย Remax (Thailand)</span>
     </div>
     <div text-center>
-      <h1 danger class="margin-top-10"><b>269</b> บาท</h1>
-      <strike>399 บาท</strike>
-      <ion-badge class="bg-lightRed">-33%</ion-badge>
+      <h1 danger class="margin-top-10"><b>{{productData.price1}}</b> บาท</h1>
+      <strike>{{productData.price}} บาท</strike>
+      <ion-badge class="bg-lightRed">{{discountPercent}}%</ion-badge>
     </div>
     <ion-item class="bg-light margin-top-10">
       <div clear item-left>
@@ -75,31 +66,42 @@
 
   </ion-card>
   <ion-grid>
-    <ion-row>
+    <ion-row *ngIf="productDetail != ''">
       <ion-col width-100>
         <h4>รายละเอียดเกี่ยวกับสินค้า</h4>
-        <ul>
-          <li>Virtual Reality 3D แว่นชมภาพเสมือนจริง ให้คุณสัมผัสประสบการณ์ใหม่กับการรับชมภาพยนตร์ 3 มิติ หรือชมภาพในมุมกว้าง 360 องศา ยังสามารถโหลดแอพเพื่อเชื่อมต่อระหว่างสมาร์ทโฟนและคอมพิวเตอร์ของคุณและเพลิดเพลินไปกับเกมส์ที่คุณชอบได้อีกด้วย เพียงแค่นี้คุณก็สามารถสนุกกับ
-            VR ล้ำ ๆ ได้อย่างง่ายดาย</li>
+        <ul *ngFor="let detail of productDetail">
+          <li>{{detail}}</li>
         </ul>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="productProperties != ''">
       <ion-col width-100>
         <h4>คุณสมบัติพิเศษ</h4>
-        <ul>
-          <li>ชมภาพในระบบ 3D และแบบ 360 องศา ให้ความรู้สึกสมจริงเสมือนอยู่ในสถานที่จริง</li>
-          <li>รองรับสมาร์ทโฟนทั้ง iOS และ Android ที่มีขนาดไม่เกิน 4.7 - 6 นิ้ว</li>
-          <li>เลนส์ชนิดพิเศษไม่ต้องสวมแว่น 3D ก็สามารถรับชมภาพในระบบ 3D ได้ (ภาพยนตร์ของคุณต้องเป็นระบบ 3D ด้วยเช่นกัน)</li>
-          <li>เพลิดเพลินได้ต่อเนื่องโดยไม่ปวดตา</li>
-          <li>ฟองน้ำที่รองรับหน้าผาก สามารถทำความสะอาดได้ง่าย</li>
+        <ul *ngFor="let properties of productProperties">
+          <li>{{properties}}</li>
+        </ul>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="productInbox != ''">
+      <ion-col width-100>
+        <h4>วิธีใช้งาน</h4>
+        <ul *ngFor="let HowTo of productHowTo">
+          <li>{{HowTo}}</li>
+        </ul>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="productInbox != ''">
+      <ion-col width-100>
+        <h4>อุปกรณ์ภายในกล่อง</h4>
+        <ul *ngFor="let inbox of productInbox">
+          <li>{{inbox}}</li>
         </ul>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <ion-card>
-    <img class="img-detail" *ngFor="let i of items" src="https://img.remaxthailand.co.th/product/D1600530/{{i.name}}" />
+    <img class="img-detail" *ngFor="let i of items" src="https://img.remaxthailand.co.th/product/{{productSku}}/{{i}}" />
   </ion-card>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!loadFinish">

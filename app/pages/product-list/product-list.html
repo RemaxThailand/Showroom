@@ -14,14 +14,14 @@
 <ion-content padding>
   <ion-grid>
     <ion-row wrap>
-      <ion-col width-50 *ngFor="let p of product">
+      <ion-col width-50 *ngFor="let p of productListData">
         <ion-card>
           <img src="https://img.remaxthailand.co.th/300x300/product/{{p.sku}}/1.jpg" (click)="navigate(p)" />
           <ion-card-content>
             <p (click)="navigate(p)">{{p.name}}</p>
             <button light block outline class="price" (click)="updateFavorite(p)">
               <ion-item class="price">
-                <span clear item-left>&#3647;(<strike>{{p.price}}</strike>) <b danger>{{p.sellPrice}}</b></span>
+                <span clear item-left>&#3647;(<strike>{{p.price}}</strike>) <b danger>{{p.price1}}</b></span>
                 <span *ngIf="p.isFavorite" clear item-right danger><ion-icon name="md-heart" class="relative top-2"></ion-icon></span>
                 <span *ngIf="!p.isFavorite" clear item-right><ion-icon name="md-heart-outline" class="relative top-2"></ion-icon></span>
               </ion-item>
@@ -33,6 +33,10 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!loadFinish">
+        <ion-infinite-scroll-content loadingText="กำลังโหลด...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
     </ion-row>
   </ion-grid>
 </ion-content>

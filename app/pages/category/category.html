@@ -8,25 +8,24 @@
 </ion-header>
 
 <ion-content padding>
-
-  <ion-card class="category-card" *ngFor="let c of category">
+  <ion-card class="category-card">
     <ion-card-header>
       <ion-icon name="ios-cube" class="relative top-2"></ion-icon>
-      <b>{{c.title}}</b>
+      <b>New Arrivals</b>
     </ion-card-header>
     <hr>
     <ion-grid>
       <ion-row>
-        <ion-col width-50>
+        <ion-col width-25>
           <ion-card class="product">
-            <img src="https://src.remaxthailand.co.th/img/category/power_bank/1.jpg" />
+            <img src="https://src.remaxthailand.co.th/img/category/new_arrivals/1.jpg" />
             <ion-item class="price">
               <span clear item-left>&#3647; <strike>1,256</strike></span>
               <span clear item-right danger>&#3647; <b>675</b></span>
             </ion-item>
           </ion-card>
         </ion-col>
-        <ion-col width-50>
+        <ion-col width-25>
           <ion-card class="product">
             <img src="https://src.remaxthailand.co.th/img/category/bag/1.jpg" />
             <ion-item class="price">
@@ -35,9 +34,8 @@
             </ion-item>
           </ion-card>
         </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col width-50>
+
+        <ion-col width-25>
           <ion-card class="product">
             <img src="https://src.remaxthailand.co.th/img/category/cable/1.jpg" />
             <ion-item class="price">
@@ -46,7 +44,63 @@
             </ion-item>
           </ion-card>
         </ion-col>
-        <ion-col width-50>
+        <ion-col width-25>
+          <ion-card class="product">
+            <img src="https://src.remaxthailand.co.th/img/category/adapter/1.jpg" />
+            <ion-item class="price">
+              <span clear item-left>&#3647; <strike>1,256</strike></span>
+              <span clear item-right danger>&#3647; <b>675</b></span>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <hr>
+    <ion-row class="view-all">
+      <ion-col text-center (click)="navigate(new)">
+        <button clear small>
+          <div class="capitalize" id="new_arrivals">ดูสินค้าทั้งหมดในหมวดหมู่ New Arrivals</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card class="category-card" *ngFor="let c of categoryData">
+    <ion-card-header>
+      <ion-icon name="ios-cube"></ion-icon>
+      <b>{{c.name}}</b>
+    </ion-card-header>
+    <hr>
+    <ion-grid>
+      <ion-row>
+        <ion-col width-25>
+          <ion-card class="product">
+            <img src="https://src.remaxthailand.co.th/img/category/{{c.url}}/1.jpg" />
+            <ion-item class="price">
+              <span clear item-left>&#3647; <strike>1,256</strike></span>
+              <span clear item-right danger>&#3647; <b>675</b></span>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+        <ion-col width-25>
+          <ion-card class="product">
+            <img src="https://src.remaxthailand.co.th/img/category/bag/1.jpg" />
+            <ion-item class="price">
+              <span clear item-left>&#3647; <strike>1,256</strike></span>
+              <span clear item-right danger>&#3647; <b>675</b></span>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+
+        <ion-col width-25>
+          <ion-card class="product">
+            <img src="https://src.remaxthailand.co.th/img/category/cable/1.jpg" />
+            <ion-item class="price">
+              <span clear item-left>&#3647; <strike>1,256</strike></span>
+              <span clear item-right danger>&#3647; <b>675</b></span>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+        <ion-col width-25>
           <ion-card class="product">
             <img src="https://src.remaxthailand.co.th/img/category/adapter/1.jpg" />
             <ion-item class="price">
@@ -61,7 +115,7 @@
     <ion-row class="view-all">
       <ion-col text-center (click)="navigate(c)">
         <button clear small>
-          <div class="capitalize">ดูสินค้าทั้งหมดในหมวดหมู่ {{c.title}}</div>
+          <div class="capitalize" id="{{c.url}}">ดูสินค้าทั้งหมดในหมวดหมู่ {{c.name}}</div>
         </button>
       </ion-col>
     </ion-row>

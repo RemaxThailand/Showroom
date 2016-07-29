@@ -28,7 +28,7 @@ class TabIconTextPage {
   template: `
 	<ion-tabs class="tabs-icon" primary>
 		<ion-tab tabIcon="ios-keypad" [root]="tabProduct"></ion-tab>
-		<ion-tab tabIcon="md-cart" [root]="tabCart" tabBadge="3" tabBadgeStyle="danger"></ion-tab>
+		<ion-tab tabIcon="md-cart" [root]="tabCart" tabBadge="6" tabBadgeStyle="danger"></ion-tab>
 		<ion-tab tabIcon="md-star" [root]="tabFavorite"></ion-tab>
 		<ion-tab tabIcon="md-time" [root]="tabHistory"></ion-tab>
 	</ion-tabs>
