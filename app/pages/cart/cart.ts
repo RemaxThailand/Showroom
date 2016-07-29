@@ -29,9 +29,36 @@ export class CartPage {
     return sum;
   }
 
-  setSelected(product, state) {
-    //product.isSelected = !product.isSelected;
-    alert(state);
+  setQuantity(product) {
+    let alert = Alert.create({
+      title: 'จำนวน (ชิ้น)',
+      inputs: [
+        {
+          name: 'qty',
+          placeholder: 'จำนวน',
+          type: 'number',
+          value: product.qty
+        }
+      ],
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          handler: data => {
+          }
+        },
+        {
+          text: 'ตกลง',
+          handler: data => {
+            product.qty = data.qty;
+            if (product.qty <= 0) product.qty = 1;
+            if (product.qty > product.remain) product.qty = product.remain;
+            this.totalPrice = this.calculatePrice();
+          }
+        }
+      ]
+    });
+    this.nav.present(alert);
   }
 
   updateQuantity(product, qty) {
@@ -59,7 +86,7 @@ export class CartPage {
           {
             text: 'ใช่',
             handler: () => {
-              for (var i = 0; i < this.product.length; i++){
+              for (var i = 0; i < this.product.length; i++) {
                 if (this.product[i].isSelected) {
                   this.product.splice(i, 1);
                   i--;
