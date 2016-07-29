@@ -102,15 +102,15 @@
           <ion-icon name="ios-send" class="relative top-2"></ion-icon> ที่อยู่ในการจัดส่งสินค้า
         </ion-item-divider>
         <ion-item>
-          <h2 class="text-wrap font-1dot2"><b>คุณอิทธิพล แอมประชา (เอิบ)</b></h2>
-          <button item-right light>
+          <h2 class="text-wrap font-1dot2"><b>คุณ{{addressSelected.firstname}} {{addressSelected.lastname}} ({{addressSelected.contactName}})</b></h2>
+          <button item-right light (click)="updateName()">
             <ion-icon name="md-create" class="margin-left-5 margin-right-5"></ion-icon>
           </button>
         </ion-item>
         <ion-item class="bg-light">
           <ion-icon name="ios-call" class="relative top-2"></ion-icon>
-          087-6733-414
-          <button item-right light>
+          {{mobileNumberFormat(addressSelected.mobile)}}
+          <button item-right light (click)="updateMobile()">
             <ion-icon name="md-create" class="margin-left-5 margin-right-5"></ion-icon>
           </button>
         </ion-item>

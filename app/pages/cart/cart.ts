@@ -7,6 +7,8 @@ import { NavController, Alert } from 'ionic-angular';
 export class CartPage {
 
   product: Array<{ name: string, sku: string, price: number, sellPrice: number, qty: number, remain: number, isSelected: boolean }>;
+  address: Array<{ id: string, firstname: string, lastname: string, contactName: string, mobile: string, isSelected: boolean }>;
+  addressSelected: any;
   totalPrice: number = 0;
   discountPercent: number = -0.03;
   couponPrice: number = 0;
@@ -21,6 +23,12 @@ export class CartPage {
       { name: 'REMAX RA-USB Micro USB / Type-C Silver', sku: 'D1600584', price: 799, sellPrice: 256, qty: 500, remain: 555, isSelected: false }
     ];
 
+    this.address = [
+      { id: '1', firstname: 'Itthipon', lastname: 'Ampracha', contactName: 'Erb', mobile: '0879654128', isSelected: false },
+      { id: '2', firstname: 'อิทธิพล', lastname: 'แอมประชา', contactName: 'เอิบ', mobile: '0876874512', isSelected: true }
+    ];
+    this.getSelectedAddress();
+
     this.totalPrice = this.calculatePrice();
 
   }
@@ -31,6 +39,15 @@ export class CartPage {
       sum += this.product[i].sellPrice * this.product[i].qty;
     }
     return sum;
+  }
+
+  getSelectedAddress() {
+    for (var i = 0; i < this.address.length; i++) {
+      if (this.address[i].isSelected) {
+        this.addressSelected = this.address[i];
+        break;
+      }
+    }
   }
 
   setQuantity(product) {
@@ -105,12 +122,88 @@ export class CartPage {
     }
   }
 
-  updateStep(step){
+  updateStep(step) {
     this.step += step;
+  }
+
+  updateName() {
+    let alert = Alert.create({
+      title: 'ชื่อผู้รับในการจัดส่งสินค้า',
+      inputs: [
+        {
+          name: 'firstname',
+          placeholder: 'ชื่อ',
+          type: 'text',
+          value: this.addressSelected.firstname
+        },
+        {
+          name: 'lastname',
+          placeholder: 'นามสกุล',
+          type: 'text',
+          value: this.addressSelected.lastname
+        },
+        {
+          name: 'contactName',
+          placeholder: 'ชื่อผู้ติดต่อ',
+          type: 'text',
+          value: this.addressSelected.contactName
+        }
+      ],
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          handler: data => {
+          }
+        },
+        {
+          text: 'ตกลง',
+          handler: data => {
+            this.addressSelected.firstname = data.firstname;
+            this.addressSelected.lastname = data.lastname;
+            this.addressSelected.contactName = data.contactName;
+          }
+        }
+      ]
+    });
+    this.nav.present(alert);
+  }
+
+  updateMobile() {
+    let alert = Alert.create({
+      title: 'เบอร์โทรศัพท์',
+      inputs: [
+        {
+          name: 'mobile',
+          placeholder: 'เบอร์โทรศัพท์',
+          type: 'tel',
+          value: this.addressSelected.mobile
+        }
+      ],
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          handler: data => {
+          }
+        },
+        {
+          text: 'ตกลง',
+          handler: data => {
+            this.addressSelected.mobile = data.mobile;
+          }
+        }
+      ]
+    });
+    this.nav.present(alert);
   }
 
   numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  mobileNumberFormat(mobile) {
+    return mobile.substr(0, 3)+'-'+mobile.substr(3, 4)+'-'+mobile.substr(7, 3);
   }
 
 }
