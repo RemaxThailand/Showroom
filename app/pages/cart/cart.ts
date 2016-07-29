@@ -8,6 +8,10 @@ export class CartPage {
 
   product: Array<{ name: string, sku: string, price: number, sellPrice: number, qty: number, remain: number, isSelected: boolean }>;
   totalPrice: number = 0;
+  discountPercent: number = -0.03;
+  couponPrice: number = 0;
+  shippingPrice: number = 100;
+  step: number = 1;
 
   constructor(private nav: NavController) {
     this.product = [
@@ -99,6 +103,10 @@ export class CartPage {
       });
       this.nav.present(confirm);
     }
+  }
+
+  updateStep(step){
+    this.step += step;
   }
 
   numberWithCommas(x) {

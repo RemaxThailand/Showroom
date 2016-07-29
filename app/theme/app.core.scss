@@ -26,12 +26,14 @@ ion-card.product { box-shadow: none; border: 1px solid #c8c8c8 }
 .bg-lightYellow { background-color: color($colors, lightYellow) }
 
 .border-top-gray { border-top: 1px solid #c8c8c8 }
+.border-bottom-gray { border-bottom: 1px solid #dedede !important }
 
 .text-wrap { white-space: normal }
 
 .margin-0 { margin: 0 !important }
 .margin-top-3 { margin-top: 3px !important }
-.margin-top-10 { margin-top: 10px }
+.margin-top-5 { margin-top: 5px !important }
+.margin-top-10 { margin-top: 10px !important }
 .margin-bottom-2 { margin-bottom: 2px }
 .margin-left-5 { margin-left: 5px }
 .margin-left-10 { margin-left: 10px }
@@ -44,9 +46,13 @@ ion-card.product { box-shadow: none; border: 1px solid #c8c8c8 }
 .padding-left-0 { padding-left: 0px }
 .padding-left-5 { padding-left: 5px }
 .padding-left-10 { padding-left: 10px }
+.padding-right-5 { padding-right: 5px }
 
 .relative { position:relative }
 .top-2 { top:2px !important }
 .top-4 { top:4px !important }
 
-.font-dot9 { font-size: 0.9em }
+.font-dot9 { font-size: 0.9em !important }
+.font-1dot2 { font-size: 1.2em !important }
+.font-1dot6 { font-size: 1.6em !important }
+.font-2 { font-size: 2em !important }

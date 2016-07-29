@@ -14,8 +14,8 @@
 
 <ion-content>
   <ion-card>
-    <ion-list>
-      <ion-item class="padding-left-5" *ngFor="let p of product;#isOdd=odd;#isEven=even" [class.bg-lightYellow]="p.isSelected" [class.bg-light]="isOdd">
+    <ion-list *ngIf="step == 1">
+      <ion-item class="padding-left-5" *ngFor="let p of product;#isOdd=odd" [class.bg-lightYellow]="p.isSelected" [class.bg-light]="isOdd">
         <ion-checkbox dark item-left class="margin-right-10" [(ngModel)]="p.isSelected"></ion-checkbox>
         <ion-label class="margin-0">
           <ion-item no-lines class="padding-left-5 item-text-wrap" [class.bg-lightYellow]="p.isSelected" [class.bg-light]="isOdd">
@@ -51,13 +51,90 @@
               </table>
             </ion-thumbnail>
             <h2 class="text-wrap">{{p.name}}</h2>
-            <p>ราคา <b danger>{{numberWithCommas(p.sellPrice)}}</b> บาท
-              <ion-badge class="bg-lightRed">{{(p.sellPrice/p.price*100-100).toFixed(2)}}%</ion-badge>
+            <p>&#3647; <b danger>{{numberWithCommas(p.sellPrice)}}</b>
+              <ion-badge class="bg-lightRed">รวม {{numberWithCommas(p.sellPrice*p.qty)}} บาท</ion-badge>
+              <!--ion-badge class="bg-lightRed">{{(p.sellPrice/p.price*100-100).toFixed(2)}}%</ion-badge-->
             </p>
           </ion-item>
         </ion-label>
       </ion-item>
     </ion-list>
+
+    <ion-list *ngIf="step == 2">
+      <ion-item-group>
+        <ion-item-divider light>รายการสินค้า</ion-item-divider>
+        <ion-item *ngFor="let p of product">
+          <span class="text-wrap">{{p.name}}</span>
+          <p>ราคา <b danger>{{numberWithCommas(p.sellPrice)}}</b> บาท (จำนวน <b primary>{{numberWithCommas(p.qty)}}</b> ชิ้น)</p>
+          <span item-right><b danger>{{numberWithCommas(p.sellPrice*p.qty)}}</b><br><div class="font-dot9" text-right><p>บาท</p></div></span>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider lightRed>รวม</ion-item-divider>
+        <ion-item>
+          ราคาสินค้า
+          <span item-right><b danger>{{numberWithCommas(totalPrice.toFixed(2))}}</b> <span class="font-dot9">บาท</span></span>
+        </ion-item>
+        <ion-item>
+          ส่วนลด (<span primary>{{(discountPercent*100).toFixed(2)}}%</span>)
+          <span item-right><b danger>{{numberWithCommas((totalPrice*discountPercent).toFixed(2))}}</b> <span class="font-dot9">บาท</span></span>
+        </ion-item>
+        <ion-item>
+          คูปองส่วนลด
+          <span item-right><b danger>{{numberWithCommas(couponPrice.toFixed(2))}}</b> <span class="font-dot9">บาท</span></span>
+        </ion-item>
+        <ion-item>
+          ค่าขนส่ง
+          <span item-right><b danger>{{numberWithCommas(shippingPrice.toFixed(2))}}</b> <span class="font-dot9">บาท</span></span>
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider danger>
+          รวมทั้งสิ้น
+          <span item-right><b class="font-1dot2">{{numberWithCommas((totalPrice+(totalPrice*discountPercent)+couponPrice+shippingPrice).toFixed(2))}}</b> <span class="font-dot9">บาท</span></span>
+        </ion-item-divider>
+      </ion-item-group>
+    </ion-list>
+
+    <ion-list *ngIf="step == 3" no-lines>
+      <ion-item-group>
+        <ion-item-divider light>
+          <ion-icon name="ios-send" class="relative top-2"></ion-icon> ที่อยู่ในการจัดส่งสินค้า
+        </ion-item-divider>
+        <ion-item>
+          <h2 class="text-wrap font-1dot2"><b>คุณอิทธิพล แอมประชา (เอิบ)</b></h2>
+          <button item-right light>
+            <ion-icon name="md-create" class="margin-left-5 margin-right-5"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-item class="bg-light">
+          <ion-icon name="ios-call" class="relative top-2"></ion-icon>
+          087-6733-414
+          <button item-right light>
+            <ion-icon name="md-create" class="margin-left-5 margin-right-5"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-item>
+          <div>
+            <b class="text-wrap margin-top-5">
+              <ion-icon name="md-home" class="relative top-2"></ion-icon>
+              ร้านรีแมค (ประเทศไทย) จำกัด
+            </b>
+          </div>
+          <div class="text-wrap margin-left-5 margin-top-10">
+            18/640 คอนโด Life@ท่าพระ ถ.รัชดา-ท่าพระ
+          </div>
+          <div class="text-wrap margin-left-10 margin-top-10">แขวงตลาดพลู</div>
+          <div class="text-wrap margin-left-10">เขตธนบุรี</div>
+          <div class="text-wrap margin-left-10">กรุงเทพมหานคร</div>
+          <div class="text-wrap margin-left-10 margin-top-10">รหัสไปรษณีย์ <b>10600</b></div>
+          <button item-right light>
+            <ion-icon name="md-create" class="margin-left-5 margin-right-5"></ion-icon>
+          </button>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+
   </ion-card>
 </ion-content>
 
@@ -65,17 +142,33 @@
   <ion-toolbar>
     <table width="100%">
       <tr>
-        <td class="padding-left-10 padding-right-5" valign="middle" width="10" nowrap="nowrap">
+        <td class="padding-left-10 padding-right-5" valign="middle" width="10" nowrap="nowrap" *ngIf="step == 1">
           <span class="margin-right-10">รวม</span>
         </td>
-        <td width="10" nowrap="nowrap">
+        <td width="10" nowrap="nowrap" *ngIf="step == 1">
           <h4 class="margin-top-10 margin-right-10"><b danger>{{numberWithCommas(totalPrice)}}</b></h4>
         </td>
-        <td width="10 " nowrap="nowrap">
+        <td width="10 " nowrap="nowrap" *ngIf="step == 1">
           บาท
         </td>
+        <td *ngIf="step >= 2">
+          <button primary (click)="updateStep(-1)" *ngIf="step == 2">
+            <ion-icon name="ios-arrow-dropleft"></ion-icon> แก้ไขข้อมูล
+          </button>
+          <button primary (click)="updateStep(-1)" *ngIf="step == 3">
+            <ion-icon name="ios-arrow-dropleft"></ion-icon> ย้อนกลับ
+          </button>
+        </td>
         <td align="right">
-          <button danger>
+          <button primary (click)="updateStep(1)" *ngIf="step == 1">
+            สรุปข้อมูลคำสั่งซื้อ
+            <ion-icon name="ios-arrow-dropright"></ion-icon>
+          </button>
+          <button primary (click)="updateStep(1)" *ngIf="step == 2">
+            ขั้นตอนต่อไป
+            <ion-icon name="ios-arrow-dropright"></ion-icon>
+          </button>
+          <button danger (click)="updateStep(1)" *ngIf="step == 3">
             <ion-icon name="md-checkmark-circle"></ion-icon> ยืนยันคำสั่งซื้อ
           </button>
         </td>
