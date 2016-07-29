@@ -15,10 +15,10 @@
 <ion-content>
   <ion-card>
     <ion-list>
-      <ion-item class="padding-left-5" *ngFor="let p of product" [class.bg-lightYellow]="p.isSelected">
+      <ion-item class="padding-left-5" *ngFor="let p of product;#isOdd=odd;#isEven=even" [class.bg-lightYellow]="p.isSelected" [class.bg-light]="isOdd">
         <ion-checkbox dark item-left class="margin-right-10" [(ngModel)]="p.isSelected"></ion-checkbox>
         <ion-label class="margin-0">
-          <ion-item no-lines class="padding-left-5 item-text-wrap" [class.bg-lightYellow]="p.isSelected">
+          <ion-item no-lines class="padding-left-5 item-text-wrap" [class.bg-lightYellow]="p.isSelected" [class.bg-light]="isOdd">
             <ion-thumbnail item-right class="margin-0 margin-top-3">
               <table>
                 <tr>
