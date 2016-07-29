@@ -7,7 +7,11 @@ import { NavController, Alert } from 'ionic-angular';
 export class CartPage {
 
   product: Array<{ name: string, sku: string, price: number, sellPrice: number, qty: number, remain: number, isSelected: boolean }>;
-  address: Array<{ id: string, firstname: string, lastname: string, contactName: string, mobile: string, isSelected: boolean }>;
+  address: Array<{
+    id: string, firstname: string, lastname: string, contactName: string, mobile: string,
+    shopName: string, address: string, address2: string,
+    isSelected: boolean
+  }>;
   addressSelected: any;
   totalPrice: number = 0;
   discountPercent: number = -0.03;
@@ -24,8 +28,14 @@ export class CartPage {
     ];
 
     this.address = [
-      { id: '1', firstname: 'Itthipon', lastname: 'Ampracha', contactName: 'Erb', mobile: '0879654128', isSelected: false },
-      { id: '2', firstname: 'อิทธิพล', lastname: 'แอมประชา', contactName: 'เอิบ', mobile: '0876874512', isSelected: true }
+      {
+        id: '1', firstname: 'Itthipon', lastname: 'Ampracha', contactName: 'Erb', mobile: '0879654128',
+        shopName: 'Remax (Thailand) Co.,Ltd.', address: '18/640 คอนโด Life@ท่าพระ', address2: 'ถ.รัชดา-ท่าพระ', isSelected: false
+      },
+      {
+        id: '2', firstname: 'อิทธิพล', lastname: 'แอมประชา', contactName: 'เอิบ', mobile: '0876874512',
+        shopName: 'ร้านรีแมค (ประเทศไทย) จำกัด', address: '18/640 คอนโด Life@ท่าพระ', address2: 'ถ.รัชดา-ท่าพระ', isSelected: true
+      }
     ];
     this.getSelectedAddress();
 
@@ -198,12 +208,53 @@ export class CartPage {
     this.nav.present(alert);
   }
 
+  updateAddress() {
+    let alert = Alert.create({
+      title: 'ที่อยู่ในการจัดส่งสินค้า',
+      inputs: [
+        {
+          name: 'shopName',
+          placeholder: 'ชื่อร้าน',
+          type: 'text',
+          value: this.addressSelected.shopName
+        },
+        {
+          name: 'shopName',
+          placeholder: 'ชื่อร้าน',
+          type: 'text',
+          value: this.addressSelected.shopName
+        },
+        {
+          name: 'shopName',
+          placeholder: 'ชื่อร้าน',
+          type: 'text',
+          value: this.addressSelected.shopName
+        }
+      ],
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          handler: data => {
+          }
+        },
+        {
+          text: 'ตกลง',
+          handler: data => {
+            this.addressSelected.shopName = data.shopName;
+          }
+        }
+      ]
+    });
+    this.nav.present(alert);
+  }
+
   numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   mobileNumberFormat(mobile) {
-    return mobile.substr(0, 3)+'-'+mobile.substr(3, 4)+'-'+mobile.substr(7, 3);
+    return mobile.substr(0, 3) + '-' + mobile.substr(3, 4) + '-' + mobile.substr(7, 3);
   }
 
 }

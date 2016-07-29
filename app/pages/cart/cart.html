@@ -118,17 +118,17 @@
           <div>
             <b class="text-wrap margin-top-5">
               <ion-icon name="md-home" class="relative top-2"></ion-icon>
-              ร้านรีแมค (ประเทศไทย) จำกัด
+              {{addressSelected.shopName}}
             </b>
           </div>
           <div class="text-wrap margin-left-5 margin-top-10">
-            18/640 คอนโด Life@ท่าพระ ถ.รัชดา-ท่าพระ
+            {{addressSelected.address}} {{addressSelected.address2}}
           </div>
           <div class="text-wrap margin-left-10 margin-top-10">แขวงตลาดพลู</div>
           <div class="text-wrap margin-left-10">เขตธนบุรี</div>
           <div class="text-wrap margin-left-10">กรุงเทพมหานคร</div>
           <div class="text-wrap margin-left-10 margin-top-10">รหัสไปรษณีย์ <b>10600</b></div>
-          <button item-right light>
+          <button item-right light (click)="updateAddress()">
             <ion-icon name="md-create" class="margin-left-5 margin-right-5"></ion-icon>
           </button>
         </ion-item>
