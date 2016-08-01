@@ -1,18 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import * as io from "socket.io-client";
 
-/*
-  Generated class for the ProfilePage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/profile/profile.html',
 })
 export class ProfilePage {
+  //socket: SocketIOClient.Socket;
 
   constructor(private nav: NavController) {
+    this.connect();
+  }
+
+  connect() {
+    var socket = io('http://103.58.148.77:3000');
+    socket.on('connect', function () {
+      console.log('connect');
+        socket.emit('news', { hello: 'world' });
+    });
 
   }
 
