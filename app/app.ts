@@ -36,7 +36,7 @@ class RemaxApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      StatusBar.styleDefault();
+      StatusBar.styleBlackTranslucent();
     });
   }
 
